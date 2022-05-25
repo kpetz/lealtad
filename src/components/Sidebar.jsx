@@ -18,15 +18,15 @@ const Sidebar = () => {
 	}
 
 	return (
-		<div className='ml-3 h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10'>
+		<div className='h-screen pb-10 ml-3 overflow-auto md:overflow-hidden md:hover:overflow-auto'>
 			{
 				activeMenu && (
 					<>
-						<div className='flex justify-between items-center'>
+						<div className='flex items-center justify-between'>
 							<Link
 								to='/'
 								onClick={() => handleCloseSidebar()}
-								className='items-center gap-3 ml-3 mt-4 flex text-xl font-extrabold tracking-tight dark:text-white text-slate-900 '
+								className='flex items-center gap-3 mt-4 ml-3 text-xl font-extrabold tracking-tight dark:text-white text-slate-900 '
 							>
 								<SiCorsair /> <span>Lealtad</span>
 							</Link>
@@ -34,7 +34,7 @@ const Sidebar = () => {
 								<button
 									type='button'
 									onClick={() => setActiveMenu((prevActiveMenu) => !prevActiveMenu)}
-									className='text-xl rounded-full p-3 hover:bg-light-gray mt-4 block md:hidden'
+									className='block p-3 mt-4 text-xl rounded-full hover:bg-light-gray md:hidden'
 								>
 									<MdOutlineCancel />
 								</button>
@@ -44,7 +44,7 @@ const Sidebar = () => {
 							{
 								links.map((link, index) => (
 									<div key={index}>
-										<p className='text-gray-400 m-3 mt-4 uppercase'>
+										<p className='m-3 mt-4 text-gray-400 uppercase'>
 											{link.title}
 										</p>
 										{
@@ -56,6 +56,7 @@ const Sidebar = () => {
 													className={({ isActive }) =>
 														isActive ? activeLink : normalLink
 													}
+													// style={({ isActive }) => isActive && { background: 'blue' }}
 												>
 													{subLink.icon}
 													<span className='capitalize'>

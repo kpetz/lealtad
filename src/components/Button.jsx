@@ -1,13 +1,15 @@
-const Button = ({ text }) => {
+const Button = ({
+	color,
+	bgColor,
+	text,
+	customFunc
+}) => {
 	return (
 		<button
 			type='button'
-			className='
-		text-white
-		hover:drop-shadow-xl
-		rounded		
-		'
-			style={{ background: 'blue' }}
+			className='px-4 py-2 text-white rounded hover:drop-shadow-xl'
+			style={{ background: bgColor, color: color}}
+			onClick={customFunc}
 		>
 			{text}
 		</button>
