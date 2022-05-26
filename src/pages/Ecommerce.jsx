@@ -1,100 +1,111 @@
-import React from 'react'
-import { BsCurrencyDollar } from 'react-icons/bs';
-import { GoPrimitiveDot } from 'react-icons/go';
-import { Stacked, Pie, Button, SparkLine } from '../components';
-import { earningData, SparklineAreaData, ecomPieChartData } from '../data/dummy';
-import { useStateContext } from '../contexts/ContextProvider';
+import React from "react";
+import { BsCurrencyDollar } from "react-icons/bs";
+import { GoPrimitiveDot } from "react-icons/go";
+import { IoIosMore } from "react-icons/io";
+import { DropDownListComponent } from "@syncfusion/ej2-react-dropdowns";
+
+import { Stacked, Pie, Button, LineChart, SparkLine } from "../components";
+import {
+    earningData,
+    medicalproBranding,
+    recentTransactions,
+    weeklyStats,
+    dropdownData,
+    SparklineAreaData,
+    ecomPieChartData,
+} from "../data/dummy";
+import { useStateContext } from "../contexts/ContextProvider";
+import product9 from "../data/product9.jpg";
+
+const DropDown = ({ currentMode }) => (
+    <div className="w-28 border-1 border-color px-2 py-1 rounded-md">
+        <DropDownListComponent
+            id="time"
+            fields={{ text: "Time", value: "Id" }}
+            style={{ border: "none", color: currentMode === "Dark" && "white" }}
+            value="1"
+            dataSource={dropdownData}
+            popupHeight="220px"
+            popupWidth="120px"
+        />
+    </div>
+);
 
 const Ecommerce = () => {
-	return (
-		<div className='container mx-auto mt-20 text-center md:mt-0'>
-			<div class="flex flex-wrap justify-center m-3 gap-5">
-				<div className='p-8 mb-3 bg-white bg-center bg-no-repeat bg-cover shadow-md lg:flex-nowrap dark:text-gray-200 dark:bg-secondary-dark-bg h-44 lg:h-64 rounded-xl pt-9 bg-hero-pattern'>
-					<div className='flex items-center justify-between'>
-						<div>
-							<p className='font-bold text-gray-400 lg:text-xl'>
-								Earnings
-							</p>
-							<p className='text-2xl'>$52,548.55</p>
-						</div>
-					</div>
-					<div className='mt-6'>
-						<Button
-							color='white'
-							bgColor='blue'
-							text='Download'
-						/>
-					</div>
-				</div>
-				<div className='p-8 mb-3 bg-white bg-center bg-no-repeat bg-cover shadow-md lg:flex-nowrap dark:text-gray-200 dark:bg-secondary-dark-bg h-44 lg:h-64 rounded-xl pt-9 bg-hero-pattern'>
-					<div className='flex items-center justify-between'>
-						<div>
-							<p className='font-bold text-gray-400 lg:text-xl'>
-								Earnings
-							</p>
-							<p className='text-2xl'>$52,548.55</p>
-						</div>
-					</div>
-					<div className='mt-6'>
-						<Button
-							color='white'
-							bgColor='blue'
-							text='Download'
-						/>
-					</div>
-				</div>
-			</div>
-			{/* <div className='box-border flex flex-wrap w-full'>
-				<div className='p-8 mb-3 bg-white bg-center bg-no-repeat bg-cover shadow-md dark:text-gray-200 dark:bg-secondary-dark-bg h-44 lg:h-64 rounded-xl pt-9 bg-hero-pattern'>
-					<div className='flex items-center justify-between'>
-						<div>
-							<p className='font-bold text-gray-400 lg:text-xl'>
-								Earnings
-							</p>
-							<p className='text-2xl'>$52,548.55</p>
-						</div>
-					</div>
-					<div className='mt-6'>
-						<Button
-							color='white'
-							bgColor='blue'
-							text='Download'
-						/>
-					</div>
-				</div>
-				<div className='flex flex-wrap items-center justify-center gap-1 shadow-md'>
-					{
-						earningData.map(item => (
-							<div
-								key={item.title}
-								className='w-auto p-8 bg-white dark:text-gray-200 dark:bg-secondary-dark-bg md:w-56 pt-9 rounded-2xl'
-							>
-								<button
-									type='button'
-									className='text-2xl opacity-0.9 rounded-full p-4 hover:drop-shadow-xl'
-									style={{ color: item.iconColor, backgroundColor: item.iconBg }}
-								>
-									{item.icon}
-								</button>
-								<p className='mt-3'>
-									<span className='text-lg font-semibold'>
-										{item.amount}
-									</span>
-									<span className={`text-sm ${item.pcColor === 'red' ? 'text-red-600' : 'text-green-600'} ml-2`}>
-										{item.percentage}
-									</span>
-								</p>
-								<p className='mt-1 text-sm text-gray-400'>
-									{item.title}
-								</p>
-							</div>
-						))
-					}
-				</div>
-			</div> */}
+    const { currentColor, currentMode } = useStateContext();
 
-			<div className='flex flex-wrap justify-center gap-10'>
-				<div className='p-4 m-3 bg-white shadow-lg dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl md:w-780'>
+    return (
+        <div className="m-5 mt-28">
+            <div className="grid grid-cols-1 lg:grid-cols-6 gap-2">
+                <div className="lg:col-span-2">
+                    <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg h-44 rounded-xl lg:w-auto p-8 pt-9 m-3 bg-hero-pattern bg-no-repeat bg-cover bg-center shadow-md">
+                        <div className="flex justify-between items-center">
+                            <div>
+                                <p className="font-bold text-gray-400">
+                                    Earnings
+                                </p>
+                                <p className="text-2xl">$63,448.78</p>
+                            </div>
+                            <button
+                                type="button"
+                                style={{ backgroundColor: currentColor }}
+                                className="text-2xl opacity-0.9 text-white hover:drop-shadow-xl rounded-full p-4"
+                            >
+                                <div className="bg-purple-600 rounded-full text-2xl">
+                                    <BsCurrencyDollar />
+                                </div>
+                            </button>
+                        </div>
+                        <div className="mt-6">
+                            <Button
+                                color="white"
+                                bgColor="blue"
+                                text="Download"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div className="lg:col-span-4">
+                    <div className="grid grid-cols-2 md:grid-cols-4 m-3 justify-center gap-1 items-center  ">
+                        {earningData.map((item) => (
+                            <div
+                                key={item.title}
+                                className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-xl shadow-md md:w-auto h-44 p-8"
+                            >
+                                <button
+                                    type="button"
+                                    style={{
+                                        color: item.iconColor,
+                                        backgroundColor: item.iconBg,
+                                    }}
+                                    className="text-2xl opacity-0.9 rounded-full  p-4 hover:drop-shadow-xl"
+                                >
+                                    {item.icon}
+                                </button>
+                                <p className="mt-3">
+                                    <span className="text-lg font-semibold">
+                                        {item.amount}
+                                    </span>
+                                    <span
+                                        className={`text-sm ${
+                                            item.pcColor === "red"
+                                                ? "text-red-600"
+                                                : "text-green-600"
+                                        } ml-2`}
+                                    >
+                                        {item.percentage}
+                                    </span>
+                                </p>
+                                <p className="text-sm text-gray-400  mt-1">
+                                    {item.title}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+			<div className='grid grid-cols-1 lg:grid-cols-6 gap-2 justify-center'>
+				<div className=' p-4 m-3 bg-white shadow-lg dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl md:w-780'>
 					<div className='flex justify-between'>
 						<p className='text-xl font-semibold'>
 							Revenue
@@ -105,8 +116,88 @@ const Ecommerce = () => {
 					</div>
 				</div>
 			</div>
-		</div>
-	)
-}
+        </div>
+        // <div className="m-5 mt-24">
+        //     <div className="flex flex-wrap lg:flex-nowrap justify-center ">
+        //         <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg h-44 rounded-xl w-full lg:w-80 p-8 pt-9 m-3 bg-hero-pattern bg-no-repeat bg-cover bg-center shadow-md">
+        //             <div className="flex justify-between items-center">
+        //                 <div>
+        //                     <p className="font-bold text-gray-400">Earnings</p>
+        //                     <p className="text-2xl">$63,448.78</p>
+        //                 </div>
+        //                 <button
+        //                     type="button"
+        //                     style={{ backgroundColor: currentColor }}
+        //                     className="text-2xl opacity-0.9 text-white hover:drop-shadow-xl rounded-full p-4"
+        //                 >
+        //                     <BsCurrencyDollar />
+        //                 </button>
+        //             </div>
+        //             <div className="mt-6">
+        //                 <Button color="white" bgColor="blue" text="Download" />
+        //             </div>
+        //         </div>
+        //         <div className="flex m-3 w-full flex-wrap justify-center gap-1 items-center">
+        //             {earningData.map((item) => (
+        //                 <div
+        //                     key={item.title}
+        //                     className="bg-white h-44 dark:text-gray-200 dark:bg-secondary-dark-bg md:w-56 rounded-2xl  shadow-md  p-4 pt-9  "
+        //                 >
+        //                     <button
+        //                         type="button"
+        //                         style={{
+        //                             color: item.iconColor,
+        //                             backgroundColor: item.iconBg,
+        //                         }}
+        //                         className="text-2xl opacity-0.9 rounded-full  p-4 hover:drop-shadow-xl"
+        //                     >
+        //                         {item.icon}
+        //                     </button>
+        //                     <p className="mt-3">
+        //                         <span className="text-lg font-semibold">
+        //                             {item.amount}
+        //                         </span>
+        //                         <span
+        //                             className={`text-sm ${
+        //                                 item.pcColor === "red"
+        //                                     ? "text-red-600"
+        //                                     : "text-green-600"
+        //                             } ml-2`}
+        //                         >
+        //                             {item.percentage}
+        //                         </span>
+        //                     </p>
+        //                     <p className="text-sm text-gray-400  mt-1">
+        //                         {item.title}
+        //                     </p>
+        //                 </div>
+        //             ))}
+        //         </div>
+        //     </div>
 
-export default Ecommerce
+        //     <div className="flex gap-10 flex-wrap justify-center">
+        //         <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg m-3 p-4 rounded-2xl md:w-780  ">
+        //             <div className="flex justify-between">
+        //                 <p className="font-semibold text-xl">Revenue Updates</p>
+        //                 <div className="flex items-center gap-4">
+        //                     <p className="flex items-center gap-2 text-gray-600 hover:drop-shadow-xl">
+        //                         <span>
+        //                             <GoPrimitiveDot />
+        //                         </span>
+        //                         <span>Expense</span>
+        //                     </p>
+        //                     <p className="flex items-center gap-2 text-green-600 hover:drop-shadow-xl">
+        //                         <span>
+        //                             <GoPrimitiveDot />
+        //                         </span>
+        //                         <span>Budget</span>
+        //                     </p>
+        //                 </div>
+        //             </div>
+        //         </div>
+        //     </div>
+        // </div>
+    );
+};
+
+export default Ecommerce;
