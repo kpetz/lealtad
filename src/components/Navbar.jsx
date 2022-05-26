@@ -99,8 +99,8 @@ const Navbar = () => {
 							alt='avatar'
 						/>
 						<p>
-							<span className='text-gray-400 text-14'>Hi, </span> {' '}
-							<span className='ml-1 font-bold text-gray-400 text-14'>Michael</span>
+							<span className='text-gray-400 text-14'>Hola, </span> {' '}
+							<span className='ml-1 font-bold text-gray-400 text-14'>Kevin</span>
 						</p>
 						<MdKeyboardArrowDown className='text-gray-400 text-14 hover:animate-bounce' />
 					</div>

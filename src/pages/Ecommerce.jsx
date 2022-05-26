@@ -18,7 +18,7 @@ import { useStateContext } from "../contexts/ContextProvider";
 import product9 from "../data/product9.jpg";
 
 const DropDown = ({ currentMode }) => (
-    <div className="w-28 border-1 border-color px-2 py-1 rounded-md">
+    <div className="px-2 py-1 rounded-md w-28 border-1 border-color">
         <DropDownListComponent
             id="time"
             fields={{ text: "Time", value: "Id" }}
@@ -35,11 +35,11 @@ const Ecommerce = () => {
     const { currentColor, currentMode } = useStateContext();
 
     return (
-        <div className="m-5 mt-28">
-            <div className="grid grid-cols-1 lg:grid-cols-6 gap-2">
+        <div className="m-5 mt-20 md:mt-5">
+            <div className="grid grid-cols-1 gap-2 lg:grid-cols-6">
                 <div className="lg:col-span-2">
-                    <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg h-44 rounded-xl lg:w-auto p-8 pt-9 m-3 bg-hero-pattern bg-no-repeat bg-cover bg-center shadow-md">
-                        <div className="flex justify-between items-center">
+                    <div className="p-8 m-3 bg-white bg-center bg-no-repeat bg-cover shadow-md dark:text-gray-200 dark:bg-secondary-dark-bg h-44 rounded-xl lg:w-auto pt-9 bg-hero-pattern">
+                        <div className="flex items-center justify-between">
                             <div>
                                 <p className="font-bold text-gray-400">
                                     Earnings
@@ -51,7 +51,7 @@ const Ecommerce = () => {
                                 style={{ backgroundColor: currentColor }}
                                 className="text-2xl opacity-0.9 text-white hover:drop-shadow-xl rounded-full p-4"
                             >
-                                <div className="bg-purple-600 rounded-full text-2xl">
+                                <div className="text-2xl bg-purple-600 rounded-full">
                                     <BsCurrencyDollar />
                                 </div>
                             </button>
@@ -66,11 +66,11 @@ const Ecommerce = () => {
                     </div>
                 </div>
                 <div className="lg:col-span-4">
-                    <div className="grid grid-cols-2 md:grid-cols-4 m-3 justify-center gap-1 items-center  ">
+                    <div className="grid items-center justify-center grid-cols-2 gap-1 m-3 md:grid-cols-4 ">
                         {earningData.map((item) => (
                             <div
                                 key={item.title}
-                                className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-xl shadow-md md:w-auto h-44 p-8"
+                                className="p-8 bg-white shadow-md dark:text-gray-200 dark:bg-secondary-dark-bg rounded-xl md:w-auto h-44"
                             >
                                 <button
                                     type="button"
@@ -87,16 +87,15 @@ const Ecommerce = () => {
                                         {item.amount}
                                     </span>
                                     <span
-                                        className={`text-sm ${
-                                            item.pcColor === "red"
-                                                ? "text-red-600"
-                                                : "text-green-600"
-                                        } ml-2`}
+                                        className={`text-sm ${item.pcColor === "red"
+                                            ? "text-red-600"
+                                            : "text-green-600"
+                                            } ml-2`}
                                     >
                                         {item.percentage}
                                     </span>
                                 </p>
-                                <p className="text-sm text-gray-400  mt-1">
+                                <p className="mt-1 text-sm text-gray-400">
                                     {item.title}
                                 </p>
                             </div>
@@ -104,23 +103,84 @@ const Ecommerce = () => {
                     </div>
                 </div>
             </div>
-			<div className='grid grid-cols-1 lg:grid-cols-6 gap-2 justify-center'>
-				<div className=' p-4 m-3 bg-white shadow-lg dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl md:w-780'>
-					<div className='flex justify-between'>
-						<p className='text-xl font-semibold'>
-							Revenue
-						</p>
-						<div>
-
-						</div>
-					</div>
-				</div>
-			</div>
+            <div className='grid justify-center grid-cols-1 gap-2 lg:grid-cols-6'>
+                <div className='p-4 m-3 bg-white shadow-lg dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl md:w-780'>
+                    <div className='flex justify-between'>
+                        <p className='text-xl font-semibold'>
+                            Ingresos
+                        </p>
+                        <div className='flex items-center gap-4'>
+                            <p className='flex items-center gap-2 hover:drop-shadow-xl'
+                                style={{ color: 'blue' }}>
+                                <span>
+                                    <GoPrimitiveDot />
+                                </span>
+                                <span >
+                                    Presupuesto
+                                </span>
+                            </p>
+                            <p className='flex items-center gap-2 text-green-600 hover:drop-shadow-xl'>
+                                <span>
+                                    <GoPrimitiveDot />
+                                </span>
+                                <span>
+                                    Gastos
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div className='flex flex-wrap justify-center gap-10 mt-10'>
+                        <div className='pr-10 m-4 border-r-1 border-color'>
+                            <div>
+                                <p>
+                                    <span className='text-3xl font-semibold'>$93,458</span>
+                                    <span className='p-1.5 hover:drop-shadow-xl cursor-pointer bg-green-400 text-white mr-3 text-xs rounded-full'>23%</span>
+                                </p>
+                                <p className='mt-1 text-gray-500'>
+                                    Presupuesto
+                                </p>
+                            </div>
+                            <div className='mt-8'>
+                                <p>
+                                    <span className='text-3xl font-semibold'>$48,412</span>
+                                </p>
+                                <p className='mt-1 text-gray-500'>
+                                    Gastos
+                                </p>
+                            </div>
+                            <div className='mt-5'>
+                                <SparkLine
+                                    currentColor='blue'
+                                    id='line-sparkline'
+                                    type='Line'
+                                    height='80px'
+                                    data={SparklineAreaData}
+                                    width='250px'
+                                    color='blue'
+                                />
+                            </div>
+                            <div className='mt-10'>
+                                <Button
+                                    color='white'
+                                    bgColor='blue'
+                                    text='Descargar Reporte'
+                                />
+                            </div>
+                        </div>
+                        <div>
+                            <Stacked
+                                width='320px'
+                                height='360px'
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         // <div className="m-5 mt-24">
-        //     <div className="flex flex-wrap lg:flex-nowrap justify-center ">
-        //         <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg h-44 rounded-xl w-full lg:w-80 p-8 pt-9 m-3 bg-hero-pattern bg-no-repeat bg-cover bg-center shadow-md">
-        //             <div className="flex justify-between items-center">
+        //     <div className="flex flex-wrap justify-center lg:flex-nowrap ">
+        //         <div className="w-full p-8 m-3 bg-white bg-center bg-no-repeat bg-cover shadow-md dark:text-gray-200 dark:bg-secondary-dark-bg h-44 rounded-xl lg:w-80 pt-9 bg-hero-pattern">
+        //             <div className="flex items-center justify-between">
         //                 <div>
         //                     <p className="font-bold text-gray-400">Earnings</p>
         //                     <p className="text-2xl">$63,448.78</p>
@@ -137,11 +197,11 @@ const Ecommerce = () => {
         //                 <Button color="white" bgColor="blue" text="Download" />
         //             </div>
         //         </div>
-        //         <div className="flex m-3 w-full flex-wrap justify-center gap-1 items-center">
+        //         <div className="flex flex-wrap items-center justify-center w-full gap-1 m-3">
         //             {earningData.map((item) => (
         //                 <div
         //                     key={item.title}
-        //                     className="bg-white h-44 dark:text-gray-200 dark:bg-secondary-dark-bg md:w-56 rounded-2xl  shadow-md  p-4 pt-9  "
+        //                     className="p-4 bg-white shadow-md h-44 dark:text-gray-200 dark:bg-secondary-dark-bg md:w-56 rounded-2xl pt-9 "
         //                 >
         //                     <button
         //                         type="button"
@@ -167,7 +227,7 @@ const Ecommerce = () => {
         //                             {item.percentage}
         //                         </span>
         //                     </p>
-        //                     <p className="text-sm text-gray-400  mt-1">
+        //                     <p className="mt-1 text-sm text-gray-400">
         //                         {item.title}
         //                     </p>
         //                 </div>
@@ -175,10 +235,10 @@ const Ecommerce = () => {
         //         </div>
         //     </div>
 
-        //     <div className="flex gap-10 flex-wrap justify-center">
-        //         <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg m-3 p-4 rounded-2xl md:w-780  ">
+        //     <div className="flex flex-wrap justify-center gap-10">
+        //         <div className="p-4 m-3 bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl md:w-780 ">
         //             <div className="flex justify-between">
-        //                 <p className="font-semibold text-xl">Revenue Updates</p>
+        //                 <p className="text-xl font-semibold">Revenue Updates</p>
         //                 <div className="flex items-center gap-4">
         //                     <p className="flex items-center gap-2 text-gray-600 hover:drop-shadow-xl">
         //                         <span>

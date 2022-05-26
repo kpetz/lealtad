@@ -1,6 +1,6 @@
 import { Link, NavLink } from 'react-router-dom';
 import { SiCorsair } from 'react-icons/si';
-import { MdOutlineCancel } from 'react-icons/md';
+import { MdOutlineKeyboardArrowLeft } from 'react-icons/md';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
 import { links } from '../data/dummy';
@@ -36,7 +36,7 @@ const Sidebar = () => {
 									onClick={() => setActiveMenu((prevActiveMenu) => !prevActiveMenu)}
 									className='block p-3 mt-4 text-xl rounded-full hover:bg-light-gray md:hidden'
 								>
-									<MdOutlineCancel />
+									<MdOutlineKeyboardArrowLeft />
 								</button>
 							</TooltipComponent>
 						</div>
@@ -56,7 +56,9 @@ const Sidebar = () => {
 													className={({ isActive }) =>
 														isActive ? activeLink : normalLink
 													}
-													// style={({ isActive }) => isActive && { background: 'blue' }}
+													style={({ isActive }) => ({
+														backgroundColor: isActive ? 'blue' : '',
+													})}
 												>
 													{subLink.icon}
 													<span className='capitalize'>
